@@ -1,3 +1,4 @@
+import Wrapper from "@/components/Wrapper";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 
@@ -20,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.className}>
-      <body>{children}</body>
+      <body>
+        <Wrapper>{children}</Wrapper>
+      </body>
     </html>
   );
 }
