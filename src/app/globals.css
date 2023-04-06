@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .wrapper {
+    @apply h-full w-full rounded-2xl bg-slate-50 p-12;
+  }
+}

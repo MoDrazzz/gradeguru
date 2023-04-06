@@ -1,7 +1,13 @@
-import LoginStatus from "@/components/LoginStatus";
-import Logo from "@/components/Logo";
+import Heading from "@/components/Heading";
 import Sidebar from "@/components/Sidebar";
 
 export default function Dashboard() {
-  return <Sidebar />;
+  return (
+    <>
+      <Heading>Dashboard</Heading>
+      <div className="wrapper">
+        <h1>Dashboard...</h1>
+      </div>
+    </>
+  );
 }

@@ -6,29 +6,31 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface Props {
-  name: IconVariants;
+  icon: IconVariants;
+  href: string;
+  children: string;
 }
 
-export default function NavItem({ name }: Props) {
-  const isActive = usePathname() === `/${name}`;
+export default function NavItem({ icon, href, children }: Props) {
+  const isActive = usePathname() === href;
 
   return (
     <div className="flex w-full items-center pl-9">
       <div
         className={classNames("flex w-14 items-center text-2xl", {
           "text-primary": isActive,
-          "text-slate-400": !isActive,
+          "text-slate-300": !isActive,
         })}
       >
-        <Icon name={name} />
+        <Icon name={icon} />
       </div>
       <Link
-        href={name}
+        href={href}
         className={classNames("w-full text-xl capitalize", {
-          "text-slate-400": !isActive,
+          "text-slate-300": !isActive,
         })}
       >
-        {name}
+        {children}
       </Link>
       <span
         className={classNames({
