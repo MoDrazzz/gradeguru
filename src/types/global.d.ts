@@ -1,1 +1,6 @@
-type IconVariants = "grades" | "messages" | "dashboard";
+type IconVariants =
+  | "grades"
+  | "messages"
+  | "dashboard"
+  | "arrowDown"
+  | "arrowUp";
