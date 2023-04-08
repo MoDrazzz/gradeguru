@@ -17,7 +17,7 @@ export default function NavItem({ icon, href, children }: Props) {
   return (
     <div className="flex w-full items-center pl-9">
       <div
-        className={classNames("flex w-14 items-center text-2xl", {
+        className={classNames("flex w-14 items-center justify-start text-2xl", {
           "text-primary": isActive,
           "text-slate-300": !isActive,
         })}
@@ -26,7 +26,7 @@ export default function NavItem({ icon, href, children }: Props) {
       </div>
       <Link
         href={href}
-        className={classNames("w-full text-xl capitalize", {
+        className={classNames("w-full text-lg capitalize", {
           "text-slate-300": !isActive,
         })}
       >
@@ -34,7 +34,7 @@ export default function NavItem({ icon, href, children }: Props) {
       </Link>
       <span
         className={classNames({
-          "block h-full w-1 rounded-l-full bg-primary": isActive,
+          "relative block h-full w-1 rounded-l-full bg-primary": isActive,
           hidden: !isActive,
         })}
       />

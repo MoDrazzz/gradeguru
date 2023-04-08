@@ -23,7 +23,7 @@ interface Grade {
 
 interface Student {
   id: number;
-  group: number;
+  group: string;
   number: number;
   avatar: string;
   name: string;

@@ -29,13 +29,15 @@ const Homework: GradeType = {
 
 export const gradeTypes: GradeType[] = [Test, ShortTest, Activity, Homework];
 
+export const groups = ["Group A", "Very long name group B", "Group C"];
+
 export const students: Student[] = [
   {
     id: 1,
+    group: "Group A",
     number: 1,
     avatar: "https://i.pravatar.cc/150?img=1",
     name: "Joanna Adamska",
-    group: 1,
     grades: [
       {
         id: 10,
@@ -76,7 +78,7 @@ export const students: Student[] = [
   },
   {
     id: 2,
-    group: 2,
+    group: "Group A",
     number: 2,
     avatar: "https://i.pravatar.cc/150?img=2",
     name: "Jan Kowalski",
