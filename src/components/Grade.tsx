@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import classNames from "classnames";
+import Normal from "./Normal";
 
 export default function Grade({ data }: { data: Grade }) {
   const [tooltipActive, setTooltipActive] = useState(false);
@@ -26,26 +27,24 @@ export default function Grade({ data }: { data: Grade }) {
           )}
         >
           <li>
-            Date added: <span className="font-normal">{dateAdded}</span>
+            Date added: <Normal>{dateAdded}</Normal>
           </li>
           <li>
-            Rating: <span className="font-normal">{data.rating}</span>
+            Rating: <Normal>{data.rating}</Normal>
           </li>
           <li>
-            Weight: <span className="font-normal">{data.type.weight}</span>
+            Weight: <Normal>{data.type.weight}</Normal>
           </li>
           <li>
-            Type: <span className="font-normal">{data.type.name}</span>
+            Type: <Normal>{data.type.name}</Normal>
           </li>
           <li>
             Include in average:{" "}
-            <span className="font-normal">
-              {data.type.includeInAverage ? "Yes" : "No"}
-            </span>
+            <Normal>{data.type.includeInAverage ? "Yes" : "No"}</Normal>
           </li>
           {data.comments && (
             <li>
-              Comments: <span className="font-normal">{data.comments}</span>
+              Comments: <Normal>{data.comments}</Normal>
             </li>
           )}
         </ul>

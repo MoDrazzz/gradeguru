@@ -5,7 +5,11 @@ import {
   faWindowRestore,
 } from "@fortawesome/free-regular-svg-icons";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleDown,
+  faAngleUp,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
@@ -18,6 +22,7 @@ const icons = {
   grades: faEdit,
   arrowDown: faAngleDown,
   arrowUp: faAngleUp,
+  check: faCheck,
 };
 
 export default function Icon({ name }: Props) {

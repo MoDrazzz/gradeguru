@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "./Button";
 import Icon from "./Icon";
 import LoginStatus from "./LoginStatus";
@@ -9,7 +11,7 @@ export default function Sidebar() {
     <aside className="flex h-screen w-[15vw] flex-col items-center gap-12 border-r-2 border-slate-300 bg-slate-50 py-12">
       <Logo />
       <LoginStatus />
-      <Button>New lesson</Button>
+      <Button onClick={() => {}}>New lesson</Button>
       <nav className="grid w-full gap-8">
         <NavItem icon="dashboard" href="/dashboard">
           Dashboard

@@ -2,10 +2,11 @@ import classNames from "classnames";
 
 interface Props {
   children: string;
+  onClick: () => void;
   isBig?: boolean;
 }
 
-export default function Button({ children, isBig }: Props) {
+export default function Button({ children, isBig, onClick }: Props) {
   return (
     <button
       className={classNames(
@@ -14,6 +15,7 @@ export default function Button({ children, isBig }: Props) {
           "text-xl": isBig,
         }
       )}
+      onClick={onClick}
     >
       {children}
     </button>

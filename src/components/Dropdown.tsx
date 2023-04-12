@@ -4,8 +4,8 @@ import classNames from "classnames";
 
 interface Props {
   items: string[];
-  state: string | null | undefined;
-  stateSetter: React.Dispatch<React.SetStateAction<string | null | undefined>>;
+  state: DropdownItem;
+  stateSetter: React.Dispatch<React.SetStateAction<DropdownItem>>;
 }
 
 export default function Dropdown({ items, state, stateSetter }: Props) {
@@ -30,9 +30,14 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
   resetIdCounter();
 
   return (
-    <div className="relative">
+    <div className="relative text-base">
       <button
-        className="flex w-fit items-center justify-between rounded-lg border-2 border-slate-300 px-3 py-2"
+        className={classNames(
+          "flex w-fit min-w-[6rem] items-center justify-between rounded-lg border-2 border-slate-300 px-3 py-2",
+          {
+            "border-primary": isOpen,
+          }
+        )}
         {...getToggleButtonProps()}
       >
         <p {...getLabelProps()} className="mr-5">
@@ -42,7 +47,7 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
       </button>
       <ul
         className={classNames(
-          "absolute top-full mt-1 w-fit rounded-lg border-2 border-slate-300 bg-slate-50",
+          "absolute top-full z-10 mt-1 w-fit min-w-[6rem] rounded-lg border-2 border-slate-300 bg-slate-50",
           {
             hidden: !isOpen,
           }

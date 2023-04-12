@@ -8,9 +8,7 @@ import { useState } from "react";
 import { groups } from "@/data/students";
 
 export default function Grades() {
-  const [selectedGroup, setSelectedGroup] = useState<null | undefined | string>(
-    groups[0]
-  );
+  const [selectedGroup, setSelectedGroup] = useState<DropdownItem>(groups[0]);
 
   return (
     <>

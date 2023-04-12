@@ -3,7 +3,8 @@ type IconVariants =
   | "messages"
   | "dashboard"
   | "arrowDown"
-  | "arrowUp";
+  | "arrowUp"
+  | "check";
 
 interface GradeType {
   id: number;
@@ -28,4 +29,11 @@ interface Student {
   avatar: string;
   name: string;
   grades: Grade[];
+}
+
+type DropdownItem = string | null | undefined;
+
+interface OverlayProps {
+  isVisible: boolean;
+  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
