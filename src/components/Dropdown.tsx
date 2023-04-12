@@ -19,7 +19,6 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
     getItemProps,
   } = useSelect({
     items,
-    defaultSelectedItem: items[0],
     selectedItem: state,
     onSelectedItemChange: ({ selectedItem: newSelectedItem }) => {
       stateSetter(newSelectedItem);

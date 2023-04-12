@@ -33,7 +33,4 @@ interface Student {
 
 type DropdownItem = string | null | undefined;
 
-interface OverlayProps {
-  isVisible: boolean;
-  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type OverlayVisibilitySetter = React.Dispatch<React.SetStateAction<boolean>>;

@@ -5,7 +5,8 @@ import Image from "next/image";
 import Grade from "./Grade";
 import Avatar from "./Avatar";
 import AddGradeOverlay from "./AddGradeOverlay";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import EditGradeOverlay from "./EditGradeOverlay";
 
 interface Props {
   student: Student;
@@ -23,6 +24,9 @@ const getAverage = (grades: Grade[]) => {
 
 export default function StudentRow({ student }: Props) {
   const [addGradeOverlayVisible, setAddGradeOverlayVisible] = useState(false);
+  const [editGradeOverlayVisible, setEditGradeOverlayVisible] = useState(false);
+  const [editGradeOverlayContent, setEditGradeOverlayContent] =
+    useState<Grade>();
 
   return (
     <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr_auto] items-center gap-6 border-b-2 border-slate-300 px-12 py-2 last:border-b-0">
@@ -32,12 +36,26 @@ export default function StudentRow({ student }: Props) {
       <span className="w-12 text-center">{getAverage(student.grades)}</span>
       <div className="flex gap-3">
         {student.grades.map((grade) => (
-          <Grade key={grade.id} data={grade} />
+          <Fragment key={grade.id}>
+            <Grade
+              data={grade}
+              onClick={() => {
+                setEditGradeOverlayVisible(true);
+                setEditGradeOverlayContent(grade);
+              }}
+            />
+          </Fragment>
         ))}
       </div>
+      {editGradeOverlayVisible && editGradeOverlayContent && (
+        <EditGradeOverlay
+          setIsVisible={setEditGradeOverlayVisible}
+          student={student}
+          grade={editGradeOverlayContent}
+        />
+      )}
       {addGradeOverlayVisible && (
         <AddGradeOverlay
-          isVisible={addGradeOverlayVisible}
           setIsVisible={setAddGradeOverlayVisible}
           student={student}
         />
