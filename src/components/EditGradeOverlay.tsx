@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
 import ListItem from "./ListItem";
 import { gradeTypes } from "@/data/students";
-import Checkbox from "./Checkbox";
 import Textarea from "./Textarea";
 import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
@@ -15,7 +14,6 @@ interface Props {
 }
 
 const ratings = ["1", "2", "3", "4", "5", "6"];
-const weights = ["1", "2", "3"];
 
 export default function EditGradeOverlay({
   setIsVisible,

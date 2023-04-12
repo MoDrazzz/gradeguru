@@ -13,7 +13,6 @@ interface Props {
 }
 
 const ratings = ["1", "2", "3", "4", "5", "6"];
-const weights = ["1", "2", "3"];
 
 export default function AddGradeOverlay({ setIsVisible, student }: Props) {
   const [rating, setRating] = useState<DropdownItem>(ratings[0]);
