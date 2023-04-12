@@ -5,7 +5,8 @@ import Heading from "@/components/Heading";
 import StudentRow from "@/components/StudentRow";
 import { students } from "@/data/students";
 import { useState } from "react";
-import { groups } from "@/data/students";
+import { groups, gradeTypes } from "@/data/students";
+import GradeType from "@/components/GradeType";
 
 export default function Grades() {
   const [selectedGroup, setSelectedGroup] = useState<DropdownItem>(groups[0]);
@@ -14,13 +15,13 @@ export default function Grades() {
     <>
       <Heading>Grades</Heading>
       <div className="wrapper">
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex h-full w-full flex-col gap-2">
           <Dropdown
             state={selectedGroup}
             stateSetter={setSelectedGroup}
             items={groups}
           />
-          <div className="flex w-full flex-col">
+          <div className="flex h-full w-full flex-col">
             <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr] gap-6 px-12 py-2 font-semibold">
               <span className="w-10" />
               <span className="w-6 text-center">Nr</span>
@@ -33,6 +34,11 @@ export default function Grades() {
                 <StudentRow key={student.id} student={student} />
               ) : null;
             })}
+          </div>
+          <div className="flex gap-8 p-3">
+            {gradeTypes.map((gradeType) => (
+              <GradeType key={gradeType.id} data={gradeType} />
+            ))}
           </div>
         </div>
       </div>
