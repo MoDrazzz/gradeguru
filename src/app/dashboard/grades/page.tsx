@@ -1,24 +1,17 @@
 "use client";
 
-import Dropdown from "@/components/Dropdown";
-import Heading from "@/components/Heading";
-import StudentRow from "@/components/StudentRow";
-import { students } from "@/data/students";
-import { useState } from "react";
-import { groups, gradeTypes } from "@/data/students";
-import GradeType from "@/components/GradeType";
-import EditGradeTypeOverlay from "@/components/EditGradeTypeOverlay";
-import Button from "@/components/Button";
-import SmallButton from "@/components/SmallButton";
 import AddGradeTypeOverlay from "@/components/AddGradeTypeOverlay";
+import Dropdown from "@/components/Dropdown";
+import GradeType from "@/components/GradeType";
+import Heading from "@/components/Heading";
+import SmallButton from "@/components/SmallButton";
+import StudentRow from "@/components/StudentRow";
+import { gradeTypes, groups, students } from "@/data/students";
+import { useState } from "react";
 
 export default function Grades() {
   const [selectedGroup, setSelectedGroup] = useState<DropdownItem>(groups[0]);
-  const [editGradeTypeOverlayVisible, setEditGradeTypeOverlayVisible] =
-    useState(false);
-  const [editGradeTypeOverlayContent, setEditGradeTypeOverlayContent] =
-    useState<GradeType>();
-  const [addGradeTypeOverlayVisible, setAddGradeTypeOverlayVisible] =
+  const [isAddGradeTypeOverlayVisible, setIsAddGradeTypeOverlayVisible] =
     useState(false);
 
   return (
@@ -46,28 +39,17 @@ export default function Grades() {
             })}
           </div>
           <div className="flex gap-8 p-3">
-            <SmallButton onClick={() => setAddGradeTypeOverlayVisible(true)} />
+            <SmallButton
+              onClick={() => setIsAddGradeTypeOverlayVisible(true)}
+            />
             {gradeTypes.map((gradeType) => (
-              <GradeType
-                key={gradeType.id}
-                data={gradeType}
-                onClick={() => {
-                  setEditGradeTypeOverlayContent(gradeType);
-                  setEditGradeTypeOverlayVisible(true);
-                }}
-              />
+              <GradeType key={gradeType.id} data={gradeType} />
             ))}
           </div>
         </div>
       </div>
-      {editGradeTypeOverlayVisible && editGradeTypeOverlayContent && (
-        <EditGradeTypeOverlay
-          gradeType={editGradeTypeOverlayContent}
-          setIsVisible={setEditGradeTypeOverlayVisible}
-        />
-      )}
-      {addGradeTypeOverlayVisible && (
-        <AddGradeTypeOverlay setIsVisible={setAddGradeTypeOverlayVisible} />
+      {isAddGradeTypeOverlayVisible && (
+        <AddGradeTypeOverlay setIsVisible={setIsAddGradeTypeOverlayVisible} />
       )}
     </>
   );

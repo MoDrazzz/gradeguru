@@ -1,9 +1,9 @@
 "use client";
 
-import Icon from "./Icon";
 import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Icon from "./Icon";
 
 interface Props {
   icon: IconVariants;

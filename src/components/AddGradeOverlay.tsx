@@ -1,11 +1,10 @@
+import { gradeTypes } from "@/data/students";
 import { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
 import ListItem from "./ListItem";
-import { gradeTypes } from "@/data/students";
-import Checkbox from "./Checkbox";
-import Textarea from "./Textarea";
 import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
+import Textarea from "./Textarea";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;

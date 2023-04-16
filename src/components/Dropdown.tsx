@@ -1,6 +1,6 @@
-import { useSelect, resetIdCounter } from "downshift";
-import Icon from "./Icon";
 import classNames from "classnames";
+import { resetIdCounter, useSelect } from "downshift";
+import Icon from "./Icon";
 
 interface Props {
   items: string[];

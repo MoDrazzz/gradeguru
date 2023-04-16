@@ -7,7 +7,6 @@ interface Props {
 
 export default function Checkbox({ state, stateSetter }: Props) {
   const handleChange = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    console.log(e);
     if (e.code === "Enter") {
       stateSetter((prev) => !prev);
     }

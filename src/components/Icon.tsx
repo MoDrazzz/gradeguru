@@ -1,10 +1,10 @@
 "use client";
 
 import {
+  faEdit,
   faEnvelope,
   faWindowRestore,
 } from "@fortawesome/free-regular-svg-icons";
-import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import {
   faAngleDown,
   faAngleUp,

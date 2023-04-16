@@ -1,5 +1,5 @@
-import Heading from "./Heading";
 import Button from "./Button";
+import Heading from "./Heading";
 
 interface Props {
   title: string;
@@ -19,7 +19,6 @@ export default function Overlay({
   const handleDisappear = (e: React.MouseEvent) => {
     if (e.currentTarget === e.target) {
       setIsVisible(false);
-      console.log(e);
     }
   };
 

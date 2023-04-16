@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import colors from "tailwindcss/colors";
 
 interface Props {

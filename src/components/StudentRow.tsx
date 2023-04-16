@@ -1,12 +1,9 @@
 "use client";
 
-import Button from "@/components/Button";
-import Image from "next/image";
-import Grade from "./Grade";
-import Avatar from "./Avatar";
-import AddGradeOverlay from "./AddGradeOverlay";
 import { Fragment, useState } from "react";
-import EditGradeOverlay from "./EditGradeOverlay";
+import AddGradeOverlay from "./AddGradeOverlay";
+import Avatar from "./Avatar";
+import Grade from "./Grade";
 import SmallButton from "./SmallButton";
 
 interface Props {
@@ -24,10 +21,8 @@ const getAverage = (grades: Grade[]) => {
 };
 
 export default function StudentRow({ student }: Props) {
-  const [addGradeOverlayVisible, setAddGradeOverlayVisible] = useState(false);
-  const [editGradeOverlayVisible, setEditGradeOverlayVisible] = useState(false);
-  const [editGradeOverlayContent, setEditGradeOverlayContent] =
-    useState<Grade>();
+  const [isAddGradeOverlayVisible, setIsAddGradeOverlayVisible] =
+    useState(false);
 
   return (
     <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr] items-center gap-6 border-b-2 border-slate-300 px-12 py-2 last:border-b-0">
@@ -38,30 +33,17 @@ export default function StudentRow({ student }: Props) {
       <div className="flex gap-3">
         <SmallButton
           isRectangular
-          onClick={() => setAddGradeOverlayVisible(true)}
+          onClick={() => setIsAddGradeOverlayVisible(true)}
         />
         {student.grades.map((grade) => (
           <Fragment key={grade.id}>
-            <Grade
-              data={grade}
-              onClick={() => {
-                setEditGradeOverlayVisible(true);
-                setEditGradeOverlayContent(grade);
-              }}
-            />
+            <Grade student={student} data={grade} />
           </Fragment>
         ))}
       </div>
-      {editGradeOverlayVisible && editGradeOverlayContent && (
-        <EditGradeOverlay
-          setIsVisible={setEditGradeOverlayVisible}
-          student={student}
-          grade={editGradeOverlayContent}
-        />
-      )}
-      {addGradeOverlayVisible && (
+      {isAddGradeOverlayVisible && (
         <AddGradeOverlay
-          setIsVisible={setAddGradeOverlayVisible}
+          setIsVisible={setIsAddGradeOverlayVisible}
           student={student}
         />
       )}

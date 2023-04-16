@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "./Button";
-import Icon from "./Icon";
 import LoginStatus from "./LoginStatus";
 import Logo from "./Logo";
 import NavItem from "./NavItem";

@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import ListItem from "./ListItem";
-import Checkbox from "./Checkbox";
-import Overlay from "./Overlay";
-import Input from "./Input";
-import Dropdown from "./Dropdown";
-import ColorInput from "./ColorInput";
 import colors from "tailwindcss/colors";
+import Checkbox from "./Checkbox";
+import ColorInput from "./ColorInput";
+import Dropdown from "./Dropdown";
+import Input from "./Input";
+import ListItem from "./ListItem";
+import Overlay from "./Overlay";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
