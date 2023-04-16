@@ -4,6 +4,7 @@ import Button from "./Button";
 interface Props {
   title: string;
   confirmAction: () => void;
+  deleteAction?: () => void;
   setIsVisible: OverlayVisibilitySetter;
   children: React.ReactNode;
 }
@@ -11,6 +12,7 @@ interface Props {
 export default function Overlay({
   title,
   confirmAction,
+  deleteAction,
   setIsVisible,
   children,
 }: Props) {
@@ -24,6 +26,11 @@ export default function Overlay({
           <Button isRed onClick={() => setIsVisible(false)}>
             Cancel
           </Button>
+          {deleteAction && (
+            <Button isRed onClick={deleteAction}>
+              Delete
+            </Button>
+          )}
         </div>
       </div>
     </div>

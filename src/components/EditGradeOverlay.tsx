@@ -25,7 +25,7 @@ export default function EditGradeOverlay({
   const commentsRef = useRef<HTMLTextAreaElement>(null);
   const dateAdded = new Date(grade.dateAdded).toLocaleString("en-gb");
 
-  const handleEditUser = () => {
+  const handleEditGrade = () => {
     setIsVisible(false);
 
     if (!commentsRef.current) return;
@@ -37,11 +37,16 @@ export default function EditGradeOverlay({
     });
   };
 
+  const handleDeleteGrade = () => {
+    console.log(`Delete grade.`);
+  };
+
   return (
     <Overlay
       title="Edit grade"
       setIsVisible={setIsVisible}
-      confirmAction={handleEditUser}
+      confirmAction={handleEditGrade}
+      deleteAction={handleDeleteGrade}
     >
       <StudentProfile student={student} />
       <div className="flex flex-col gap-2 text-xl">

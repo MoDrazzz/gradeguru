@@ -35,11 +35,16 @@ export default function EditGradeTypeOverlay({
     });
   };
 
+  const handleDeleteGradeType = () => {
+    console.log(`Delete grade type.`);
+  };
+
   return (
     <Overlay
       title="Edit grade type"
       setIsVisible={setIsVisible}
       confirmAction={handleEditGradeType}
+      deleteAction={handleDeleteGradeType}
     >
       <ul className="flex flex-col gap-2 text-xl">
         <ListItem>

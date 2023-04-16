@@ -15,21 +15,24 @@ export default function NavItem({ icon, href, children }: Props) {
   const isActive = usePathname() === href;
 
   return (
-    <div className="flex w-full items-center pl-9">
-      <div
-        className={classNames("flex w-14 items-center justify-start text-2xl", {
-          "text-primary": isActive,
-          "text-slate-300": !isActive,
-        })}
-      >
-        <Icon name={icon} />
-      </div>
+    <div className="flex w-full pl-9">
       <Link
         href={href}
-        className={classNames("w-full text-lg capitalize", {
+        className={classNames("flex w-full text-lg capitalize", {
           "text-slate-300": !isActive,
         })}
       >
+        <div
+          className={classNames(
+            "flex w-14 items-center justify-start text-2xl",
+            {
+              "text-primary": isActive,
+              "text-slate-300": !isActive,
+            }
+          )}
+        >
+          <Icon name={icon} />
+        </div>
         {children}
       </Link>
       <span
