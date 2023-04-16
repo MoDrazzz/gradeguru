@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 interface Props {
   children: string;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isBig?: boolean;
   isRed?: boolean;
 }

@@ -1,5 +1,5 @@
-import classNames from "classnames";
 import Normal from "./Normal";
+import Tooltip from "./Tooltip";
 
 interface Data extends Omit<Grade, "dateAdded"> {
   dateAdded: string;
@@ -11,11 +11,7 @@ interface Props {
 
 export default function GradeTooltip({ data }: Props) {
   return (
-    <ul
-      className={classNames(
-        "absolute top-full z-10 ml-1 mt-1 w-max rounded-lg border-2 border-slate-400 bg-blue-50 p-3"
-      )}
-    >
+    <Tooltip position="bottom-left">
       <li>
         Date added: <Normal>{data.dateAdded}</Normal>
       </li>
@@ -37,6 +33,6 @@ export default function GradeTooltip({ data }: Props) {
           Comments: <Normal>{data.comments}</Normal>
         </li>
       )}
-    </ul>
+    </Tooltip>
   );
 }
