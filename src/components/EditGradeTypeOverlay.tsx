@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import Checkbox from "./Checkbox";
+import ColorInput from "./ColorInput";
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 import ListItem from "./ListItem";
@@ -22,6 +23,11 @@ export default function EditGradeTypeOverlay({
   const [includeInAverage, setIncludeInAverage] = useState(
     gradeType.includeInAverage
   );
+  const [color, setColor] = useState<string>(gradeType.color);
+
+  const handleSelectColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setColor(e.target.value);
+  };
 
   const handleEditGradeType = () => {
     setIsVisible(false);
@@ -32,6 +38,7 @@ export default function EditGradeTypeOverlay({
       name: nameInput.current.value,
       weight,
       includeInAverage,
+      color,
     });
   };
 
@@ -65,6 +72,51 @@ export default function EditGradeTypeOverlay({
             state={includeInAverage}
             stateSetter={setIncludeInAverage}
           />
+        </ListItem>
+        <ListItem>
+          <label>Color:</label>
+          <div className="flex w-full flex-wrap gap-2">
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "red"}
+              color="red"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "orange"}
+              color="orange"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "yellow"}
+              color="yellow"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "green"}
+              color="green"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "blue"}
+              color="blue"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "purple"}
+              color="purple"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "pink"}
+              color="pink"
+            />
+            <ColorInput
+              onChange={handleSelectColor}
+              checked={color === "gray"}
+              color="gray"
+            />
+          </div>
         </ListItem>
       </ul>
     </Overlay>

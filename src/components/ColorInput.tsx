@@ -22,7 +22,7 @@ export default function ColorInput({ color, checked, onChange }: Props) {
         type="radio"
         name="colors"
         checked={checked}
-        value={colorHex}
+        value={color}
         onChange={onChange}
         className="peer absolute left-0 top-0 z-10 h-full w-full opacity-0"
       />

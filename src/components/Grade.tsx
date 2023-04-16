@@ -1,4 +1,5 @@
 import { useState } from "react";
+import colors from "tailwindcss/colors";
 import EditGradeOverlay from "./EditGradeOverlay";
 import GradeTooltip from "./GradeTooltip";
 
@@ -18,7 +19,7 @@ export default function Grade({ data, student }: Props) {
         <button
           className="h-8 w-8 rounded-md text-center text-slate-50"
           style={{
-            backgroundColor: data.type.color,
+            backgroundColor: colors[data.type.color][400],
           }}
           onMouseEnter={() => setIsTooltipActive(true)}
           onMouseLeave={() => setIsTooltipActive(false)}

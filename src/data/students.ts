@@ -1,28 +1,28 @@
 const Test: GradeType = {
   id: 100,
   name: "Test",
-  color: "#F87171",
+  color: "red",
   weight: 3,
   includeInAverage: true,
 };
 const ShortTest: GradeType = {
   id: 101,
   name: "Short Test",
-  color: "#FACC15",
+  color: "yellow",
   weight: 2,
   includeInAverage: true,
 };
 const Activity: GradeType = {
   id: 102,
   name: "Activity",
-  color: "#FB923C",
+  color: "orange",
   weight: 1,
   includeInAverage: true,
 };
 const Homework: GradeType = {
   id: 103,
   name: "Homework",
-  color: "#4ADE80",
+  color: "green",
   weight: 1,
   includeInAverage: true,
 };

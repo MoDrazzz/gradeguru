@@ -1,4 +1,5 @@
 import { useState } from "react";
+import colors from "tailwindcss/colors";
 import EditGradeTypeOverlay from "./EditGradeTypeOverlay";
 import GradeTypeTooltip from "./GradeTypeTooltip";
 
@@ -20,7 +21,7 @@ export default function GradeType({ data }: Props) {
       >
         <span
           className="h-3 w-3 cursor-pointer rounded-full"
-          style={{ backgroundColor: data.color }}
+          style={{ backgroundColor: colors[data.color][400] }}
         />
         <label className="cursor-pointer">{data.name}</label>
         {isTooltipActive && <GradeTypeTooltip data={data} />}

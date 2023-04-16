@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import colors from "tailwindcss/colors";
 import Checkbox from "./Checkbox";
 import ColorInput from "./ColorInput";
 import Dropdown from "./Dropdown";
@@ -16,10 +15,10 @@ export default function AddGradeTypeOverlay({ setIsVisible }: Props) {
   const nameInput = useRef<HTMLInputElement>(null);
   const [weight, setWeight] = useState<DropdownItem>(weights[0]);
   const [includeInAverage, setIncludeInAverage] = useState(true);
-  const [selectedColor, setSelectedColor] = useState<string>(colors.red[400]);
+  const [color, setColor] = useState("red");
 
   const handleSelectColor = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedColor(e.target.value);
+    setColor(e.target.value);
   };
 
   const handleEditGradeType = () => {
@@ -31,7 +30,7 @@ export default function AddGradeTypeOverlay({ setIsVisible }: Props) {
       name: nameInput.current.value,
       weight,
       includeInAverage,
-      selectedColor,
+      color,
     });
   };
 
@@ -62,42 +61,42 @@ export default function AddGradeTypeOverlay({ setIsVisible }: Props) {
           <div className="flex w-full flex-wrap gap-2">
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.red[400]}
+              checked={color === "red"}
               color="red"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.orange[400]}
+              checked={color === "orange"}
               color="orange"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.yellow[400]}
+              checked={color === "yellow"}
               color="yellow"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.green[400]}
+              checked={color === "green"}
               color="green"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.blue[400]}
+              checked={color === "blue"}
               color="blue"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.purple[400]}
+              checked={color === "purple"}
               color="purple"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.pink[400]}
+              checked={color === "pink"}
               color="pink"
             />
             <ColorInput
               onChange={handleSelectColor}
-              checked={selectedColor === colors.gray[400]}
+              checked={color === "gray"}
               color="gray"
             />
           </div>
