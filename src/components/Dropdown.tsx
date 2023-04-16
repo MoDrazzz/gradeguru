@@ -46,7 +46,7 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
       </button>
       <ul
         className={classNames(
-          "absolute top-full z-10 mt-1 w-fit min-w-[6rem] rounded-lg border-2 border-slate-300 bg-slate-50",
+          "absolute top-full z-20 mt-1 w-fit min-w-[6rem] rounded-lg border-2 border-slate-300 bg-slate-50",
           {
             hidden: !isOpen,
           }

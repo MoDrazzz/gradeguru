@@ -9,6 +9,7 @@ import {
   faAngleDown,
   faAngleUp,
   faCheck,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -23,6 +24,7 @@ const icons = {
   arrowDown: faAngleDown,
   arrowUp: faAngleUp,
   check: faCheck,
+  plus: faPlus,
 };
 
 export default function Icon({ name }: Props) {

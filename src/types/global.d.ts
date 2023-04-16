@@ -4,7 +4,8 @@ type IconVariants =
   | "dashboard"
   | "arrowDown"
   | "arrowUp"
-  | "check";
+  | "check"
+  | "plus";
 
 interface GradeType {
   id: number;

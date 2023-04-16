@@ -37,7 +37,7 @@ export default function EditGradeTypeOverlay({
 
   return (
     <Overlay
-      title="Edit grade"
+      title="Edit grade type"
       setIsVisible={setIsVisible}
       confirmAction={handleEditGradeType}
     >

@@ -8,6 +8,9 @@ import { useState } from "react";
 import { groups, gradeTypes } from "@/data/students";
 import GradeType from "@/components/GradeType";
 import EditGradeTypeOverlay from "@/components/EditGradeTypeOverlay";
+import Button from "@/components/Button";
+import RoundButton from "@/components/RoundButton";
+import AddGradeTypeOverlay from "@/components/AddGradeTypeOverlay";
 
 export default function Grades() {
   const [selectedGroup, setSelectedGroup] = useState<DropdownItem>(groups[0]);
@@ -15,6 +18,8 @@ export default function Grades() {
     useState(false);
   const [editGradeTypeOverlayContent, setEditGradeTypeOverlayContent] =
     useState<GradeType>();
+  const [addGradeTypeOverlayVisible, setAddGradeTypeOverlayVisible] =
+    useState(false);
 
   return (
     <>
@@ -40,8 +45,8 @@ export default function Grades() {
               ) : null;
             })}
           </div>
-          {/* dodaj stan dla wyswietlanego gradetype w overlayu tak samo jak w editgradeoverlay */}
           <div className="flex gap-8 p-3">
+            <RoundButton onClick={() => setAddGradeTypeOverlayVisible(true)} />
             {gradeTypes.map((gradeType) => (
               <GradeType
                 key={gradeType.id}
@@ -58,6 +63,9 @@ export default function Grades() {
               gradeType={editGradeTypeOverlayContent}
               setIsVisible={setEditGradeTypeOverlayVisible}
             />
+          )}
+          {addGradeTypeOverlayVisible && (
+            <AddGradeTypeOverlay setIsVisible={setAddGradeTypeOverlayVisible} />
           )}
         </div>
       </div>
