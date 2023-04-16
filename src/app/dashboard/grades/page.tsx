@@ -9,7 +9,7 @@ import { groups, gradeTypes } from "@/data/students";
 import GradeType from "@/components/GradeType";
 import EditGradeTypeOverlay from "@/components/EditGradeTypeOverlay";
 import Button from "@/components/Button";
-import RoundButton from "@/components/RoundButton";
+import SmallButton from "@/components/SmallButton";
 import AddGradeTypeOverlay from "@/components/AddGradeTypeOverlay";
 
 export default function Grades() {
@@ -37,7 +37,7 @@ export default function Grades() {
               <span className="w-6 text-center">Nr</span>
               <span>Name</span>
               <span className="w-12 text-center">Avg</span>
-              <span className="">Grades</span>
+              <span>Grades</span>
             </div>
             {students.map((student) => {
               return selectedGroup === student.group ? (
@@ -46,7 +46,7 @@ export default function Grades() {
             })}
           </div>
           <div className="flex gap-8 p-3">
-            <RoundButton onClick={() => setAddGradeTypeOverlayVisible(true)} />
+            <SmallButton onClick={() => setAddGradeTypeOverlayVisible(true)} />
             {gradeTypes.map((gradeType) => (
               <GradeType
                 key={gradeType.id}
@@ -58,17 +58,17 @@ export default function Grades() {
               />
             ))}
           </div>
-          {editGradeTypeOverlayVisible && editGradeTypeOverlayContent && (
-            <EditGradeTypeOverlay
-              gradeType={editGradeTypeOverlayContent}
-              setIsVisible={setEditGradeTypeOverlayVisible}
-            />
-          )}
-          {addGradeTypeOverlayVisible && (
-            <AddGradeTypeOverlay setIsVisible={setAddGradeTypeOverlayVisible} />
-          )}
         </div>
       </div>
+      {editGradeTypeOverlayVisible && editGradeTypeOverlayContent && (
+        <EditGradeTypeOverlay
+          gradeType={editGradeTypeOverlayContent}
+          setIsVisible={setEditGradeTypeOverlayVisible}
+        />
+      )}
+      {addGradeTypeOverlayVisible && (
+        <AddGradeTypeOverlay setIsVisible={setAddGradeTypeOverlayVisible} />
+      )}
     </>
   );
 }
