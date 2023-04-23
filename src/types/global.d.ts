@@ -9,6 +9,16 @@ declare global {
       [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
     }[Keys];
 
+  type Colors =
+    | "gray"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "green"
+    | "blue"
+    | "purple"
+    | "pink";
+
   type IconVariants =
     | "grades"
     | "messages"

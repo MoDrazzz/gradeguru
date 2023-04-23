@@ -5,20 +5,20 @@ import Dropdown from "./Dropdown";
 import Input from "./Input";
 import ListItem from "./ListItem";
 import Overlay from "./Overlay";
+import { colors, weights } from "@/data/core";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
 }
-const weights = ["1", "2", "3"];
 
 export default function AddGradeTypeOverlay({ setIsVisible }: Props) {
   const nameInput = useRef<HTMLInputElement>(null);
   const [weight, setWeight] = useState<DropdownItem>(weights[0]);
   const [includeInAverage, setIncludeInAverage] = useState(true);
-  const [color, setColor] = useState("red");
+  const [selectedColor, setSelectedColor] = useState("red");
 
   const handleSelectColor = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setColor(e.target.value);
+    setSelectedColor(e.target.value);
   };
 
   const handleEditGradeType = () => {
@@ -30,7 +30,7 @@ export default function AddGradeTypeOverlay({ setIsVisible }: Props) {
       name: nameInput.current.value,
       weight,
       includeInAverage,
-      color,
+      color: selectedColor,
     });
   };
 
@@ -59,46 +59,14 @@ export default function AddGradeTypeOverlay({ setIsVisible }: Props) {
         <ListItem>
           <label>Color:</label>
           <div className="flex w-full flex-wrap gap-2">
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "red"}
-              color="red"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "orange"}
-              color="orange"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "yellow"}
-              color="yellow"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "green"}
-              color="green"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "blue"}
-              color="blue"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "purple"}
-              color="purple"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "pink"}
-              color="pink"
-            />
-            <ColorInput
-              onChange={handleSelectColor}
-              checked={color === "gray"}
-              color="gray"
-            />
+            {colors.map((color) => (
+              <ColorInput
+                key={color}
+                onChange={handleSelectColor}
+                checked={selectedColor === color}
+                color={color}
+              />
+            ))}
           </div>
         </ListItem>
       </ul>

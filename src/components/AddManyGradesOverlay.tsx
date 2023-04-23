@@ -5,6 +5,7 @@ import ListItem from "./ListItem";
 import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
+import { ratings as ratingsList } from "@/data/core";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
@@ -14,7 +15,7 @@ interface Ratings {
   [key: number]: string | null | undefined;
 }
 
-const ratingsList = [null, "1", "2", "3", "4", "5", "6"];
+const ratingValues = [null, ...ratingsList];
 
 const initialRatingsStateValue = students.reduce(
   (prev, curr) => ({ ...prev, [curr.id]: null }),
@@ -69,7 +70,7 @@ export default function AddManyGradesOverlay({ setIsVisible }: Props) {
               onSelectedItemChange={({ selectedItem }) => {
                 setRatings({ ...ratings, [student.id]: selectedItem });
               }}
-              items={ratingsList}
+              items={ratingValues}
               state={ratings[student.id]}
             />
           </li>

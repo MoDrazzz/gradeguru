@@ -5,13 +5,12 @@ import ListItem from "./ListItem";
 import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
+import { ratings } from "@/data/core";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
   student: Student;
 }
-
-const ratings = ["1", "2", "3", "4", "5", "6"];
 
 export default function AddGradeOverlay({ setIsVisible, student }: Props) {
   const [rating, setRating] = useState<DropdownItem>(ratings[0]);

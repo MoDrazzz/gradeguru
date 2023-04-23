@@ -1,15 +1,7 @@
 import colors from "tailwindcss/colors";
 
 interface Props {
-  color:
-    | "gray"
-    | "red"
-    | "orange"
-    | "yellow"
-    | "green"
-    | "blue"
-    | "purple"
-    | "pink";
+  color: Colors;
   checked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

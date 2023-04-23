@@ -6,14 +6,13 @@ import Normal from "./Normal";
 import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
+import { ratings } from "@/data/core";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
   student: Student;
   grade: Grade;
 }
-
-const ratings = ["1", "2", "3", "4", "5", "6"];
 
 export default function EditGradeOverlay({
   setIsVisible,
