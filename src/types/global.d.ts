@@ -28,12 +28,20 @@ declare global {
     | "check"
     | "plus";
 
+  interface Group {
+    id: number;
+    identifier: string;
+    students: Student[];
+    gradeTypes: GradeType[];
+  }
+
   interface GradeType {
     id: number;
     name: string;
     color: keyof DefaultColors;
     weight: number;
     includeInAverage: boolean;
+    groupID: number;
   }
 
   interface Grade {
@@ -46,7 +54,6 @@ declare global {
 
   interface Student {
     id: number;
-    group: string;
     number: number;
     avatar: string;
     name: string;

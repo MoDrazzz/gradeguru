@@ -4,6 +4,7 @@ const Test: GradeType = {
   color: "red",
   weight: 3,
   includeInAverage: true,
+  groupID: 1,
 };
 const ShortTest: GradeType = {
   id: 101,
@@ -11,6 +12,7 @@ const ShortTest: GradeType = {
   color: "yellow",
   weight: 2,
   includeInAverage: true,
+  groupID: 1,
 };
 const Activity: GradeType = {
   id: 102,
@@ -18,6 +20,7 @@ const Activity: GradeType = {
   color: "orange",
   weight: 1,
   includeInAverage: true,
+  groupID: 1,
 };
 const Homework: GradeType = {
   id: 103,
@@ -25,16 +28,16 @@ const Homework: GradeType = {
   color: "green",
   weight: 1,
   includeInAverage: true,
+  groupID: 1,
 };
 
 export const gradeTypes: GradeType[] = [Test, ShortTest, Activity, Homework];
 
-export const groups = ["Group A", "Very long name group B", "Group C"];
+// export const groups = ["Group A", "Very long name group B", "Group C"];
 
 export const students: Student[] = [
   {
     id: 1,
-    group: "Group A",
     number: 1,
     avatar: "https://i.pravatar.cc/150?img=1",
     name: "Joanna Adamska",
@@ -78,7 +81,6 @@ export const students: Student[] = [
   },
   {
     id: 2,
-    group: "Group A",
     number: 2,
     avatar: "https://i.pravatar.cc/150?img=2",
     name: "Jan Kowalski",
@@ -114,3 +116,24 @@ export const students: Student[] = [
     ],
   },
 ];
+
+const groupA: Group = {
+  id: 1001,
+  identifier: "A",
+  students,
+  gradeTypes,
+};
+const groupB: Group = {
+  id: 1002,
+  identifier: "B - It's very long identifier!",
+  students: [],
+  gradeTypes: [],
+};
+const groupC: Group = {
+  id: 1003,
+  identifier: "C",
+  students: [],
+  gradeTypes: [],
+};
+
+export const groups: Group[] = [groupA, groupB, groupC];

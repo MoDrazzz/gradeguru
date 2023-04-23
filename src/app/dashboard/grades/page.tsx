@@ -8,15 +8,31 @@ import GradeType from "@/components/GradeType";
 import Heading from "@/components/Heading";
 import SmallButton from "@/components/SmallButton";
 import StudentRow from "@/components/StudentRow";
-import { gradeTypes, groups, students } from "@/data/students";
-import { useState } from "react";
+import { useSelectedGroupContext } from "@/contexts/SelectedGroupContext";
+import { groups } from "@/data/students";
+import { useEffect, useState } from "react";
 
 export default function Grades() {
-  const [selectedGroup, setSelectedGroup] = useState<DropdownItem>(groups[0]);
+  const [selectedGroupDropdown, setSelectedGroupDropdown] =
+    useState<DropdownItem>(`Group ${groups[0].identifier}`);
+  const { selectedGroup, setSelectedGroup } = useSelectedGroupContext();
   const [isAddGradeTypeOverlayVisible, setIsAddGradeTypeOverlayVisible] =
     useState(false);
   const [isAddManyGradesOverlayVisible, setIsAddManyGradesOverlayVisible] =
     useState(false);
+
+  useEffect(() => {
+    const currentGroup = groups.find(
+      (group) =>
+        group.identifier === selectedGroupDropdown?.replace("Group ", "")
+    );
+
+    if (!currentGroup) return;
+
+    console.log("Setting selected group");
+
+    setSelectedGroup(currentGroup);
+  }, [selectedGroupDropdown, setSelectedGroup]);
 
   return (
     <>
@@ -25,9 +41,9 @@ export default function Grades() {
         <div className="flex h-full w-full flex-col gap-3">
           <div className="grid grid-cols-[1fr_max-content]">
             <Dropdown
-              state={selectedGroup}
-              stateSetter={setSelectedGroup}
-              items={groups}
+              state={selectedGroupDropdown}
+              stateSetter={setSelectedGroupDropdown}
+              items={groups.map((group) => `Group ${group.identifier}`)}
             />
             <Button onClick={() => setIsAddManyGradesOverlayVisible(true)}>
               Add many grades
@@ -41,17 +57,15 @@ export default function Grades() {
               <span className="w-12 text-center">Avg</span>
               <span>Grades</span>
             </div>
-            {students.map((student) => {
-              return selectedGroup === student.group ? (
-                <StudentRow key={student.id} student={student} />
-              ) : null;
-            })}
+            {selectedGroup.students.map((student) => (
+              <StudentRow key={student.id} student={student} />
+            ))}
           </div>
           <div className="flex gap-8 p-3">
             <SmallButton
               onClick={() => setIsAddGradeTypeOverlayVisible(true)}
             />
-            {gradeTypes.map((gradeType) => (
+            {selectedGroup.gradeTypes.map((gradeType) => (
               <GradeType key={gradeType.id} data={gradeType} />
             ))}
           </div>

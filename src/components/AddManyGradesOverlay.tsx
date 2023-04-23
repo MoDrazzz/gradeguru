@@ -1,4 +1,4 @@
-import { gradeTypes, students } from "@/data/students";
+import { gradeTypes } from "@/data/students";
 import { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
 import ListItem from "./ListItem";
@@ -6,6 +6,7 @@ import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
 import { ratings as ratingsList } from "@/data/core";
+import { useSelectedGroupContext } from "@/contexts/SelectedGroupContext";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
@@ -17,15 +18,16 @@ interface Ratings {
 
 const ratingValues = [null, ...ratingsList];
 
-const initialRatingsStateValue = students.reduce(
-  (prev, curr) => ({ ...prev, [curr.id]: null }),
-  {}
-);
-
 export default function AddManyGradesOverlay({ setIsVisible }: Props) {
   const [gradeType, setGradeType] = useState<DropdownItem>(gradeTypes[0].name);
-  const [ratings, setRatings] = useState<Ratings>(initialRatingsStateValue);
   const commentsRef = useRef<HTMLTextAreaElement>(null);
+  const { selectedGroup } = useSelectedGroupContext();
+  const [ratings, setRatings] = useState<Ratings>(
+    selectedGroup.students.reduce(
+      (prev, curr) => ({ ...prev, [curr.id]: null }),
+      {}
+    )
+  );
 
   const handleAddManyGrades = () => {
     setIsVisible(false);
@@ -60,7 +62,7 @@ export default function AddManyGradesOverlay({ setIsVisible }: Props) {
         placeholder="Feel free to add some comments..."
       />
       <ul className="flex flex-col gap-6">
-        {students.map((student) => (
+        {selectedGroup.students.map((student) => (
           <li
             key={student.id}
             className="flex w-full items-center justify-between"
