@@ -1,14 +1,20 @@
 import classNames from "classnames";
-import { resetIdCounter, useSelect } from "downshift";
+import { UseSelectStateChange, resetIdCounter, useSelect } from "downshift";
 import Icon from "./Icon";
 
 interface Props {
-  items: string[];
+  items: (string | null)[];
   state: DropdownItem;
-  stateSetter: React.Dispatch<React.SetStateAction<DropdownItem>>;
+  stateSetter?: React.Dispatch<React.SetStateAction<DropdownItem>>;
+  onSelectedItemChange?: (changes: UseSelectStateChange<string | null>) => void;
 }
 
-export default function Dropdown({ items, state, stateSetter }: Props) {
+export default function Dropdown({
+  items,
+  state,
+  stateSetter,
+  onSelectedItemChange,
+}: RequireAtLeastOne<Props, "stateSetter" | "onSelectedItemChange">) {
   const {
     isOpen,
     selectedItem,
@@ -20,9 +26,11 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
   } = useSelect({
     items,
     selectedItem: state,
-    onSelectedItemChange: ({ selectedItem: newSelectedItem }) => {
-      stateSetter(newSelectedItem);
-    },
+    onSelectedItemChange: onSelectedItemChange
+      ? onSelectedItemChange
+      : ({ selectedItem: newSelectedItem }) => {
+          stateSetter && stateSetter(newSelectedItem);
+        },
   });
 
   // For SSR generation purposes.
@@ -40,7 +48,7 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
         {...getToggleButtonProps()}
       >
         <p {...getLabelProps()} className="mr-5">
-          {selectedItem ?? "Elements"}
+          {selectedItem ?? "-"}
         </p>
         {isOpen ? <Icon name="arrowUp" /> : <Icon name="arrowDown" />}
       </button>
@@ -68,7 +76,7 @@ export default function Dropdown({ items, state, stateSetter }: Props) {
                 index,
               })}
             >
-              {item}
+              {item ?? "-"}
             </li>
           ))}
       </ul>
