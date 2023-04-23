@@ -4,9 +4,10 @@ import Icon from "./Icon";
 interface Props {
   onClick: () => void;
   isRectangular?: boolean;
+  title: string;
 }
 
-export default function SmallButton({ onClick, isRectangular }: Props) {
+export default function SmallButton({ onClick, isRectangular, title }: Props) {
   return (
     <button
       className={classNames(
@@ -17,6 +18,7 @@ export default function SmallButton({ onClick, isRectangular }: Props) {
         }
       )}
       onClick={onClick}
+      title={title}
     >
       <Icon name="plus" />
     </button>

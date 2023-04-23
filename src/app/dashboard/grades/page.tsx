@@ -63,6 +63,7 @@ export default function Grades() {
           </div>
           <div className="flex gap-8 p-3">
             <SmallButton
+              title="Add grade type"
               onClick={() => setIsAddGradeTypeOverlayVisible(true)}
             />
             {selectedGroup.gradeTypes.map((gradeType) => (

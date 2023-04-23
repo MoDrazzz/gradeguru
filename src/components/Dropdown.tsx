@@ -54,7 +54,7 @@ export default function Dropdown({
       </button>
       <ul
         className={classNames(
-          "absolute top-full z-20 mt-1 w-fit min-w-[6rem] rounded-lg border-2 border-slate-300 bg-slate-50",
+          "absolute top-full z-20 mt-1 max-h-44 w-fit min-w-[6rem] overflow-auto rounded-lg border-2 border-slate-300 bg-slate-50",
           {
             hidden: !isOpen,
           }
