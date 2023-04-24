@@ -34,6 +34,7 @@ declare global {
     | "arrowDown"
     | "arrowUp"
     | "check"
+    | "logout"
     | "plus";
 
   interface Group {
