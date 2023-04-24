@@ -1,27 +1,11 @@
 "use client";
 
-import Button from "@/components/Button";
 import Link from "@/components/Link";
 import Reviews from "@/components/Reviews";
 import SignUpForm from "@/components/SignUpForm";
 import Slideshow from "@/components/Slideshow";
-import { useRef, useState } from "react";
 
-export default function Home() {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const passwordConfirmationRef = useRef<HTMLInputElement>(null);
-  const [accountType, setAccountType] = useState("student");
-
-  const handleSignUp = () => {
-    console.log({
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
-      passwordConfirmation: passwordConfirmationRef.current?.value,
-      accountType,
-    });
-  };
-
+export default function SignUp() {
   return (
     <main className="flex h-screen items-center justify-center">
       <div className="flex rounded-xl bg-slate-50 p-3">
@@ -48,16 +32,7 @@ export default function Home() {
               Have an account? <Link href="/">Log in</Link>
             </h4>
           </div>
-          <SignUpForm
-            states={{
-              accountType,
-              setAccountType,
-              emailRef,
-              passwordRef,
-              passwordConfirmationRef,
-            }}
-          />
-          <Button onClick={handleSignUp}>Sign Up</Button>
+          <SignUpForm />
         </div>
       </div>
     </main>
