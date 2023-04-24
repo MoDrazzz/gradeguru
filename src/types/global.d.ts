@@ -9,6 +9,14 @@ declare global {
       [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
     }[Keys];
 
+  interface Review {
+    id: number;
+    content: string;
+    author: string;
+    authorAvatar: string;
+    authorRole: string;
+  }
+
   type Colors =
     | "gray"
     | "red"
