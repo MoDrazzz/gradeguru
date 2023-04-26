@@ -31,6 +31,7 @@ export default function Dropdown({
       : ({ selectedItem: newSelectedItem }) => {
           stateSetter && stateSetter(newSelectedItem);
         },
+    defaultHighlightedIndex: 0,
   });
 
   // For SSR generation purposes.

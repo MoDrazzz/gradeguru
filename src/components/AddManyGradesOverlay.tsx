@@ -7,6 +7,7 @@ import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
 import { ratings as ratingsList } from "@/data/core";
 import { useSelectedGroupContext } from "@/contexts/SelectedGroupContext";
+import Error from "./Error";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;
@@ -28,11 +29,27 @@ export default function AddManyGradesOverlay({ setIsVisible }: Props) {
       {}
     )
   );
+  const [error, setError] = useState("");
 
   const handleAddManyGrades = () => {
-    setIsVisible(false);
-
     if (!commentsRef.current) return;
+
+    let isAnyGradeAdded = false;
+
+    for (const key in ratings) {
+      if (ratings[key]) {
+        isAnyGradeAdded = true;
+      }
+    }
+
+    if (!isAnyGradeAdded) {
+      setError("You have to add at least one grade.");
+      return;
+    } else {
+      setError("");
+    }
+
+    setIsVisible(false);
 
     console.log({
       gradeType,
@@ -46,6 +63,7 @@ export default function AddManyGradesOverlay({ setIsVisible }: Props) {
       title="Add many grades"
       setIsVisible={setIsVisible}
       confirmAction={handleAddManyGrades}
+      error={error}
     >
       <ul className="flex flex-col gap-2">
         <ListItem>
