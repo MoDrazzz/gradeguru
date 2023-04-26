@@ -10,16 +10,6 @@ import Slideshow from "@/components/Slideshow";
 import { useRef, useState } from "react";
 
 export default function Home() {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-
-  const handleLogIn = () => {
-    console.log({
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
-    });
-  };
-
   return (
     <main className="flex h-screen items-center justify-center">
       <div className="flex rounded-xl bg-slate-50 p-3">
@@ -31,13 +21,7 @@ export default function Home() {
               Are you new? <Link href="/signup">Sign Up</Link>
             </h4>
           </div>
-          <LogInForm
-            states={{
-              emailRef,
-              passwordRef,
-            }}
-          />
-          <Button onClick={handleLogIn}>Log In</Button>
+          <LogInForm />
         </div>
       </div>
     </main>
