@@ -7,10 +7,11 @@ import Dropdown from "@/components/Dropdown";
 import GradeType from "@/components/GradeType";
 import Heading from "@/components/Heading";
 import SmallButton from "@/components/SmallButton";
-import StudentRow from "@/components/StudentRow";
+import GradesTableRow from "@/components/GradesTableRow";
 import { useSelectedGroupContext } from "@/contexts/SelectedGroupContext";
 import { groups } from "@/data/students";
 import { useEffect, useState } from "react";
+import GradesTableHeader from "@/components/GradesTableHeader";
 
 export default function Grades() {
   const [selectedGroupDropdown, setSelectedGroupDropdown] =
@@ -50,15 +51,9 @@ export default function Grades() {
             </Button>
           </div>
           <div className="flex h-full w-full flex-col">
-            <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr] gap-6 px-12 py-2 text-sm font-bold uppercase">
-              <span className="w-10" />
-              <span className="w-6 text-center">Nr</span>
-              <span>Name</span>
-              <span className="w-12 text-center">Avg</span>
-              <span>Grades</span>
-            </div>
+            <GradesTableHeader />
             {selectedGroup.students.map((student) => (
-              <StudentRow key={student.id} student={student} />
+              <GradesTableRow key={student.id} student={student} />
             ))}
           </div>
           <div className="flex gap-8 p-3">

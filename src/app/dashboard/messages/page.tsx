@@ -5,6 +5,8 @@ import Input from "@/components/Input";
 import SmallButton from "@/components/SmallButton";
 import Warning from "@/components/Warning";
 import { useRef } from "react";
+import MessagesTableRow from "@/components/MessagesTableRow";
+import MessagesTableHeader from "@/components/MessagesTableHeader";
 
 export default function Messages() {
   const searchInput = useRef(null);
@@ -25,6 +27,16 @@ export default function Messages() {
             You have <b>2</b> unread messages.
           </p>
         </Warning>
+        <h3 className="text-heading">Unread</h3>
+        <div className="flex flex-col gap-2">
+          <MessagesTableHeader />
+          <MessagesTableRow />
+        </div>
+        <h3 className="text-heading">Everything Else</h3>
+        <div className="flex flex-col gap-2">
+          <MessagesTableHeader />
+          <MessagesTableRow />
+        </div>
       </div>
     </>
   );

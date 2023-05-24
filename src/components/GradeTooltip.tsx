@@ -1,4 +1,4 @@
-import Normal from "./Normal";
+import TextNormal from "./TextNormal";
 import Tooltip from "./Tooltip";
 
 interface Data extends Omit<Grade, "dateAdded"> {
@@ -13,24 +13,24 @@ export default function GradeTooltip({ data }: Props) {
   return (
     <Tooltip position="bottom-left">
       <li>
-        Date added: <Normal>{data.dateAdded}</Normal>
+        Date added: <TextNormal>{data.dateAdded}</TextNormal>
       </li>
       <li>
-        Rating: <Normal>{data.rating}</Normal>
+        Rating: <TextNormal>{data.rating}</TextNormal>
       </li>
       <li>
-        Weight: <Normal>{data.type.weight}</Normal>
+        Weight: <TextNormal>{data.type.weight}</TextNormal>
       </li>
       <li>
-        Type: <Normal>{data.type.name}</Normal>
+        Type: <TextNormal>{data.type.name}</TextNormal>
       </li>
       <li>
         Include in average:{" "}
-        <Normal>{data.type.includeInAverage ? "Yes" : "No"}</Normal>
+        <TextNormal>{data.type.includeInAverage ? "Yes" : "No"}</TextNormal>
       </li>
       {data.comments && (
         <li>
-          Comments: <Normal>{data.comments}</Normal>
+          Comments: <TextNormal>{data.comments}</TextNormal>
         </li>
       )}
     </Tooltip>

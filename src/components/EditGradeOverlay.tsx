@@ -2,7 +2,7 @@ import { gradeTypes } from "@/data/students";
 import { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
 import ListItem from "./ListItem";
-import Normal from "./Normal";
+import TextNormal from "./TextNormal";
 import Overlay from "./Overlay";
 import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
@@ -52,7 +52,7 @@ export default function EditGradeOverlay({
         <ul className="flex flex-col gap-2">
           <ListItem>
             <label>Date added:</label>
-            <Normal>{dateAdded}</Normal>
+            <TextNormal>{dateAdded}</TextNormal>
           </ListItem>
           <ListItem>
             <label>Rating:</label>

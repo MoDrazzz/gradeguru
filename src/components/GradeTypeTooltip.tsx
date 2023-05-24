@@ -1,4 +1,4 @@
-import Normal from "./Normal";
+import TextNormal from "./TextNormal";
 import Tooltip from "./Tooltip";
 
 interface Props {
@@ -9,14 +9,14 @@ export default function GradeTypeTooltip({ data }: Props) {
   return (
     <Tooltip position="top-left">
       <li>
-        Name: <Normal>{data.name}</Normal>
+        Name: <TextNormal>{data.name}</TextNormal>
       </li>
       <li>
-        Weight: <Normal>{data.weight}</Normal>
+        Weight: <TextNormal>{data.weight}</TextNormal>
       </li>
       <li>
         Include in average:{" "}
-        <Normal>{data.includeInAverage ? "Yes" : "No"}</Normal>
+        <TextNormal>{data.includeInAverage ? "Yes" : "No"}</TextNormal>
       </li>
     </Tooltip>
   );

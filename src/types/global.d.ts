@@ -37,7 +37,9 @@ declare global {
     | "logout"
     | "plus"
     | "search"
-    | "warning";
+    | "warning"
+    | "star"
+    | "starFilled";
 
   interface Group {
     id: number;

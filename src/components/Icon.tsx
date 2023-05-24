@@ -3,6 +3,7 @@
 import {
   faEdit,
   faEnvelope,
+  faStar,
   faWindowRestore,
 } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -13,6 +14,7 @@ import {
   faSearch,
   faSignOut,
   faWarning,
+  faStar as faStarFilled,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -31,6 +33,8 @@ const icons = {
   logout: faSignOut,
   search: faSearch,
   warning: faWarning,
+  star: faStar,
+  starFilled: faStarFilled,
 };
 
 export default function Icon({ name }: Props) {

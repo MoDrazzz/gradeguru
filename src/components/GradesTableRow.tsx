@@ -20,16 +20,16 @@ const getAverage = (grades: Grade[]) => {
   return (sum / divider).toFixed(2);
 };
 
-export default function StudentRow({ student }: Props) {
+export default function GradesTableRow({ student }: Props) {
   const [isAddGradeOverlayVisible, setIsAddGradeOverlayVisible] =
     useState(false);
 
   return (
-    <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr] items-center gap-6 border-b-2 border-slate-300 px-12 py-2 last:border-b-0">
+    <div className="grid-cols-grades grid items-center gap-6 border-b-2 border-slate-300 px-12 py-2 last:border-b-0">
       <Avatar src={student.avatar} name={student.name} />
-      <span className="w-6 text-center">{student.number}</span>
+      <span className="text-center">{student.number}</span>
       <span>{student.name}</span>
-      <span className="w-12 text-center">{getAverage(student.grades)}</span>
+      <span className="text-center">{getAverage(student.grades)}</span>
       <div className="flex gap-3">
         <SmallButton
           icon="plus"
