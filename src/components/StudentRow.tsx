@@ -32,7 +32,7 @@ export default function StudentRow({ student }: Props) {
       <span className="w-12 text-center">{getAverage(student.grades)}</span>
       <div className="flex gap-3">
         <SmallButton
-          isRectangular
+          icon="plus"
           onClick={() => setIsAddGradeOverlayVisible(true)}
         />
         {student.grades.map((grade) => (

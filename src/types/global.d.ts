@@ -35,7 +35,9 @@ declare global {
     | "arrowUp"
     | "check"
     | "logout"
-    | "plus";
+    | "plus"
+    | "search"
+    | "warning";
 
   interface Group {
     id: number;

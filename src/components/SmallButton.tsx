@@ -3,24 +3,34 @@ import Icon from "./Icon";
 
 interface Props {
   onClick: () => void;
-  isRectangular?: boolean;
-  title: string;
+  isRounded?: boolean;
+  isBig?: boolean;
+  title?: string;
+  icon: "plus" | "search";
 }
 
-export default function SmallButton({ onClick, isRectangular, title }: Props) {
+export default function SmallButton({
+  onClick,
+  isBig,
+  isRounded,
+  title,
+  icon,
+}: Props) {
   return (
     <button
       className={classNames(
-        "flex h-8 w-8 items-center justify-center bg-blue-200 text-center text-primary",
+        "flex aspect-square items-center justify-center bg-blue-200 text-center text-primary",
         {
-          "rounded-lg": isRectangular,
-          "rounded-full": !isRectangular,
+          "rounded-lg": !isRounded,
+          "rounded-full": isRounded,
+          "h-8": !isBig,
+          "h-11 text-lg": isBig,
         }
       )}
       onClick={onClick}
       title={title}
     >
-      <Icon name="plus" />
+      <Icon name={icon} />
     </button>
   );
 }

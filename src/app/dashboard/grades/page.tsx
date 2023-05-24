@@ -50,7 +50,7 @@ export default function Grades() {
             </Button>
           </div>
           <div className="flex h-full w-full flex-col">
-            <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr] gap-6 px-12 py-2 font-semibold">
+            <div className="grid grid-cols-[auto_min-content_25%_min-content_1fr] gap-6 px-12 py-2 text-sm font-bold uppercase">
               <span className="w-10" />
               <span className="w-6 text-center">Nr</span>
               <span>Name</span>
@@ -63,6 +63,8 @@ export default function Grades() {
           </div>
           <div className="flex gap-8 p-3">
             <SmallButton
+              isRounded
+              icon="plus"
               title="Add grade type"
               onClick={() => setIsAddGradeTypeOverlayVisible(true)}
             />

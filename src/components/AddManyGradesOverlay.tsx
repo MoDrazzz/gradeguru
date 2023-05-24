@@ -7,7 +7,6 @@ import StudentProfile from "./StudentProfile";
 import Textarea from "./Textarea";
 import { ratings as ratingsList } from "@/data/core";
 import { useSelectedGroupContext } from "@/contexts/SelectedGroupContext";
-import Error from "./Error";
 
 interface Props {
   setIsVisible: OverlayVisibilitySetter;

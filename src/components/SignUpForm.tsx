@@ -6,7 +6,7 @@ import Input from "./Input";
 import Label from "./Label";
 import RadioInput from "./RadioInput";
 import Button from "./Button";
-import Error from "./Error";
+import InputError from "./InputError";
 import Tooltip from "./Tooltip";
 
 interface FormValues {
@@ -129,7 +129,7 @@ export default function SignUpForm() {
             isError={!!errors.email.length}
             placeholder="Enter email address..."
           />
-          <Error>{errors.email}</Error>
+          <InputError>{errors.email}</InputError>
         </FormField>
         <FormField>
           <Label>Password</Label>
@@ -139,7 +139,7 @@ export default function SignUpForm() {
             isError={!!errors.password.length}
             placeholder="Enter password..."
           />
-          <Error>
+          <InputError>
             {errors.password}{" "}
             {errors.password && (
               <span
@@ -159,7 +159,7 @@ export default function SignUpForm() {
                 )}
               </span>
             )}
-          </Error>
+          </InputError>
         </FormField>
         <FormField>
           <Label>Confirm Password</Label>
@@ -169,7 +169,7 @@ export default function SignUpForm() {
             refState={passwordConfirmationRef}
             placeholder="Confirm your password..."
           />
-          <Error>{errors.passwordConfirmation}</Error>
+          <InputError>{errors.passwordConfirmation}</InputError>
         </FormField>
       </div>
       <Button onClick={handleSignUp}>Sign Up</Button>

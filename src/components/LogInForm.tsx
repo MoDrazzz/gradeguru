@@ -5,7 +5,7 @@ import FormField from "./FormField";
 import Input from "./Input";
 import Label from "./Label";
 import Button from "./Button";
-import Error from "./Error";
+import InputError from "./InputError";
 
 interface FormValues {
   email: string;
@@ -76,7 +76,7 @@ export default function LogInForm() {
             placeholder="Enter email address..."
             isError={!!errors.email.length}
           />
-          <Error>{errors.email}</Error>
+          <InputError>{errors.email}</InputError>
         </FormField>
         <FormField>
           <Label>Password</Label>
@@ -86,7 +86,7 @@ export default function LogInForm() {
             placeholder="Enter password..."
             isError={!!errors.password.length}
           />
-          <Error>{errors.password}</Error>
+          <InputError>{errors.password}</InputError>
         </FormField>
       </div>
       <Button onClick={handleLogIn}>Log In</Button>

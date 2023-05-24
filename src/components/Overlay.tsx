@@ -1,5 +1,5 @@
 import Button from "./Button";
-import Error from "./Error";
+import InputError from "./InputError";
 import Heading from "./Heading";
 
 interface Props {
@@ -45,7 +45,7 @@ export default function Overlay({
           )}
           {error && (
             <div className="absolute top-full mt-3 w-full">
-              <Error>{error}</Error>
+              <InputError>{error}</InputError>
             </div>
           )}
         </div>
