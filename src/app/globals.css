@@ -13,6 +13,6 @@
     @apply grid-cols-[40px_24px_256px_48px_1fr];
   }
   .grid-cols-messages {
-    @apply grid-cols-[20px_160px_256px_1fr];
+    @apply grid-cols-[20px_176px_256px_1fr];
   }
 }

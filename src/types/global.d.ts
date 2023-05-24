@@ -73,6 +73,17 @@ declare global {
     grades: Grade[];
   }
 
+  interface Message {
+    id: number;
+    title: string;
+    content: string;
+    dateSent: number;
+    isRead: boolean;
+    isFavourite: boolean;
+    senderId: number;
+    receiverId: number;
+  }
+
   type DropdownItem = string | null | undefined;
 
   type OverlayVisibilitySetter = React.Dispatch<React.SetStateAction<boolean>>;
