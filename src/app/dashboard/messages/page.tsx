@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import Input from "@/components/Input";
 import SmallButton from "@/components/SmallButton";
+import Warning from "@/components/Warning";
 import { useRef } from "react";
 
 export default function Messages() {
@@ -19,6 +20,11 @@ export default function Messages() {
           </div>
           <Button onClick={() => {}}>New Message</Button>
         </div>
+        <Warning>
+          <p>
+            You have <b>2</b> unread messages.
+          </p>
+        </Warning>
       </div>
     </>
   );
