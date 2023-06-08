@@ -4,7 +4,7 @@
 
 @layer components {
   .wrapper {
-    @apply h-full w-full rounded-2xl bg-slate-50 p-12;
+    @apply h-full w-full overflow-auto rounded-2xl bg-slate-50 p-12;
   }
   .text-heading {
     @apply text-sm font-bold uppercase;

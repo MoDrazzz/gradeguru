@@ -4,9 +4,10 @@ import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Icon from "./Icon";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface Props {
-  icon: IconVariants;
+  icon: IconProp;
   href: string;
   children: string;
 }
@@ -24,14 +25,14 @@ export default function NavItem({ icon, href, children }: Props) {
       >
         <div
           className={classNames(
-            "flex w-14 items-center justify-start text-2xl",
+            "mr-4 flex w-8 items-center justify-center text-2xl",
             {
               "text-primary": isActive,
               "text-slate-300": !isActive,
             }
           )}
         >
-          <Icon name={icon} />
+          <Icon icon={icon} />
         </div>
         {children}
       </Link>

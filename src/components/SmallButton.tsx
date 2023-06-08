@@ -1,12 +1,13 @@
 import classNames from "classnames";
 import Icon from "./Icon";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface Props {
   onClick: () => void;
   isRounded?: boolean;
   isBig?: boolean;
   title?: string;
-  icon: "plus" | "search";
+  icon: IconProp;
 }
 
 export default function SmallButton({
@@ -30,7 +31,7 @@ export default function SmallButton({
       onClick={onClick}
       title={title}
     >
-      <Icon name={icon} />
+      <Icon icon={icon} />
     </button>
   );
 }

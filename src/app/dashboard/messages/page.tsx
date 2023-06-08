@@ -9,6 +9,7 @@ import MessagesTableRow from "@/components/MessagesTableRow";
 import MessagesTableHeader from "@/components/MessagesTableHeader";
 import { receivedMessages } from "@/data/messages";
 import Tab from "@/components/Tab";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Messages() {
   const searchInput = useRef(null);
@@ -22,7 +23,7 @@ export default function Messages() {
         <div className="flex justify-between">
           <div className="flex w-[512px] gap-4">
             <Input refState={searchInput} placeholder="Search..." />
-            <SmallButton isBig icon="search" onClick={() => {}} />
+            <SmallButton isBig icon={faSearch} onClick={() => {}} />
           </div>
           <Button onClick={() => {}}>New Message</Button>
         </div>

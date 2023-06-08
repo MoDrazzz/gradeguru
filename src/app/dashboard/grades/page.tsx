@@ -12,6 +12,7 @@ import { useSelectedGroupContext } from "@/contexts/SelectedGroupContext";
 import { groups } from "@/data/students";
 import { useEffect, useState } from "react";
 import GradesTableHeader from "@/components/GradesTableHeader";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Grades() {
   const [selectedGroupDropdown, setSelectedGroupDropdown] =
@@ -59,7 +60,7 @@ export default function Grades() {
           <div className="flex gap-8 p-3">
             <SmallButton
               isRounded
-              icon="plus"
+              icon={faPlus}
               title="Add grade type"
               onClick={() => setIsAddGradeTypeOverlayVisible(true)}
             />

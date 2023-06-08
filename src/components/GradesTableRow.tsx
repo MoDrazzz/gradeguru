@@ -5,6 +5,7 @@ import AddGradeOverlay from "./AddGradeOverlay";
 import Avatar from "./Avatar";
 import Grade from "./Grade";
 import SmallButton from "./SmallButton";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   student: Student;
@@ -32,7 +33,7 @@ export default function GradesTableRow({ student }: Props) {
       <span className="text-center">{getAverage(student.grades)}</span>
       <div className="flex gap-3">
         <SmallButton
-          icon="plus"
+          icon={faPlus}
           onClick={() => setIsAddGradeOverlayVisible(true)}
         />
         {student.grades.map((grade) => (

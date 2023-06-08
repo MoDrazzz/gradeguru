@@ -1,3 +1,4 @@
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 
 interface Props {
@@ -21,7 +22,7 @@ export default function Checkbox({ state, stateSetter }: Props) {
     >
       {state && (
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Icon name="check" />
+          <Icon icon={faCheck} />
         </span>
       )}
     </div>

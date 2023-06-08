@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { UseSelectStateChange, resetIdCounter, useSelect } from "downshift";
 import Icon from "./Icon";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   items: (string | null)[];
@@ -51,7 +52,7 @@ export default function Dropdown({
         <p {...getLabelProps()} className="mr-5">
           {selectedItem ?? "-"}
         </p>
-        {isOpen ? <Icon name="arrowUp" /> : <Icon name="arrowDown" />}
+        <Icon icon={isOpen ? faAngleUp : faAngleDown} />
       </button>
       <ul
         className={classNames(
