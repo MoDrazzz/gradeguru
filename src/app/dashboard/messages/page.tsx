@@ -4,13 +4,16 @@ import Heading from "@/components/Heading";
 import Input from "@/components/Input";
 import SmallButton from "@/components/SmallButton";
 import Warning from "@/components/Warning";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import MessagesTableRow from "@/components/MessagesTableRow";
 import MessagesTableHeader from "@/components/MessagesTableHeader";
 import { receivedMessages } from "@/data/messages";
+import Tab from "@/components/Tab";
 
 export default function Messages() {
   const searchInput = useRef(null);
+  const tabs = ["received", "sent"];
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
     <>
@@ -28,24 +31,51 @@ export default function Messages() {
             You have <b>2</b> unread messages.
           </p>
         </Warning>
-        <h3 className="text-heading">Unread</h3>
-        <div className="flex flex-col gap-2">
-          <MessagesTableHeader />
-          {receivedMessages
-            .filter((message) => !message.isRead)
-            .map((message) => (
-              <MessagesTableRow key={message.id} message={message} />
-            ))}
+        <div className="flex">
+          {tabs.map((tab) => (
+            <Tab
+              isActive={activeTab === tab}
+              name={tab}
+              onClick={() => setActiveTab(tab)}
+              key={tab}
+            />
+          ))}
         </div>
-        <h3 className="text-heading">Everything Else</h3>
-        <div className="flex flex-col gap-2">
-          <MessagesTableHeader />
-          {receivedMessages
-            .filter((message) => message.isRead)
-            .map((message) => (
-              <MessagesTableRow key={message.id} message={message} />
-            ))}
-        </div>
+        {activeTab === tabs[0] && (
+          <>
+            <h3 className="text-heading">Unread</h3>
+            <div className="flex flex-col gap-2">
+              <MessagesTableHeader />
+              {receivedMessages
+                .filter((message) => !message.isRead)
+                .map((message) => (
+                  <MessagesTableRow key={message.id} message={message} />
+                ))}
+            </div>
+            <h3 className="text-heading">Everything Else</h3>
+            <div className="flex flex-col gap-2">
+              <MessagesTableHeader />
+              {receivedMessages
+                .filter((message) => message.isRead)
+                .map((message) => (
+                  <MessagesTableRow key={message.id} message={message} />
+                ))}
+            </div>
+          </>
+        )}
+        {activeTab === tabs[1] && (
+          <>
+            <h3 className="text-heading">Sent</h3>
+            <div className="flex flex-col gap-2">
+              <MessagesTableHeader />
+              {receivedMessages
+                .filter((message) => message.isRead)
+                .map((message) => (
+                  <MessagesTableRow key={message.id} message={message} />
+                ))}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
