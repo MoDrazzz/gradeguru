@@ -4,10 +4,6 @@ import Button from "@/components/Button";
 import Link from "@/components/Link";
 import LogInForm from "@/components/LogInForm";
 import Logo from "@/components/Logo";
-import Reviews from "@/components/Reviews";
-import SignUpForm from "@/components/SignUpForm";
-import Slideshow from "@/components/Slideshow";
-import { useRef, useState } from "react";
 
 export default function Home() {
   return (

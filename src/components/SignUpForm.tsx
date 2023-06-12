@@ -8,11 +8,17 @@ import RadioInput from "./RadioInput";
 import Button from "./Button";
 import InputError from "./InputError";
 import Tooltip from "./Tooltip";
+import { supabase } from "@/lib/supabaseClient";
+import { setClaim } from "@/lib/supabaseFunctions";
 
-interface FormValues {
+interface InputValues {
   email: string;
   password: string;
   passwordConfirmation: string;
+}
+
+interface FormValues extends InputValues {
+  accountType: string;
 }
 
 const emailRegex = new RegExp(
@@ -33,8 +39,17 @@ export default function SignUpForm() {
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmationRef = useRef<HTMLInputElement>(null);
   const [accountType, setAccountType] = useState("student");
-  const [errors, setErrors] = useState<FormValues>(initialErrorsState);
+  const [errors, setErrors] = useState<InputValues>(initialErrorsState);
   const [tooltipVisible, setTooltipVisible] = useState(false);
+
+  const createAccount = async (formValues: FormValues) => {
+    console.log(formValues);
+
+    supabase.auth.signUp({
+      email: formValues.email,
+      password: formValues.password,
+    });
+  };
 
   const handleSignUp = () => {
     const email = emailRef.current?.value;
@@ -51,7 +66,7 @@ export default function SignUpForm() {
       return;
     }
 
-    const formValues: FormValues = {
+    const formValues: InputValues = {
       email,
       password,
       passwordConfirmation,
@@ -70,8 +85,8 @@ export default function SignUpForm() {
     }
 
     for (const key in newErrors) {
-      if (!formValues[key as keyof FormValues].length) {
-        newErrors[key as keyof FormValues] = "This field is required.";
+      if (!formValues[key as keyof InputValues].length) {
+        newErrors[key as keyof InputValues] = "This field is required.";
       }
     }
 
@@ -84,10 +99,10 @@ export default function SignUpForm() {
 
     setErrors(initialErrorsState);
 
-    console.log({
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
-      passwordConfirmation: passwordConfirmationRef.current?.value,
+    createAccount({
+      email,
+      password,
+      passwordConfirmation,
       accountType,
     });
   };
