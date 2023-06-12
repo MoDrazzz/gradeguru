@@ -14,17 +14,17 @@ export default function Sidebar() {
       <LoginStatus />
       <Button onClick={() => {}}>New lesson</Button>
       <nav className="grid w-full gap-8">
-        <NavItem icon={faIcons} href="/dashboard">
+        <NavItem icon={faIcons} href="/shell/dashboard">
           Dashboard
         </NavItem>
-        <NavItem icon={faEnvelope} href="/dashboard/messages">
+        <NavItem icon={faEnvelope} href="/shell/messages">
           Messages
         </NavItem>
-        <NavItem icon={faEdit} href="/dashboard/grades">
+        <NavItem icon={faEdit} href="/shell/grades">
           Grades
         </NavItem>
       </nav>
-      <NavItem icon={faSignOut} href="/">
+      <NavItem isStatic icon={faSignOut} href="/">
         Log Out
       </NavItem>
     </aside>

@@ -11,7 +11,7 @@ export default function Tab({ name, onClick, isActive }: Props) {
     <span
       className={classNames("text-heading cursor-pointer border-b-4 px-5", {
         "border-primary": isActive,
-        "border-slate-300": !isActive,
+        "border-slate-300 text-slate-300": !isActive,
       })}
       onClick={onClick}
     >

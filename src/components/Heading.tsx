@@ -1,5 +1,5 @@
 interface Props {
-  children: string;
+  children: string | string[];
 }
 
 export default function Heading({ children }: Props) {
