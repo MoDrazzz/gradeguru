@@ -6,6 +6,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-poppins)"],
+      },
       colors: {
         dark: colors.slate[800],
         primary: colors.blue[500],

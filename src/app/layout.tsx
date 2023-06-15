@@ -4,7 +4,6 @@ import "./globals.css";
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin", "latin-ext"],
-  display: "swap",
   variable: "--font-poppins",
 });
 
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="en" className={`${poppins.variable}`}>
       <body className="bg-slate-200 font-medium text-dark">{children}</body>
     </html>
   );
