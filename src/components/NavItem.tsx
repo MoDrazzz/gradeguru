@@ -9,11 +9,18 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 interface Props {
   icon: IconProp;
   href: string;
+  onClick?: () => void;
   isStatic?: boolean;
   children: string;
 }
 
-export default function NavItem({ icon, href, isStatic, children }: Props) {
+export default function NavItem({
+  icon,
+  href,
+  isStatic,
+  onClick,
+  children,
+}: Props) {
   const isActive = usePathname().startsWith(href);
 
   return (
@@ -23,6 +30,7 @@ export default function NavItem({ icon, href, isStatic, children }: Props) {
         className={classNames("flex w-full text-lg capitalize", {
           "text-slate-300": !isActive || isStatic,
         })}
+        onClick={onClick}
       >
         <div
           className={classNames(
