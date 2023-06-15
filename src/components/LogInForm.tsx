@@ -6,6 +6,8 @@ import Input from "./Input";
 import Label from "./Label";
 import Button from "./Button";
 import InputError from "./InputError";
+import { useRouter } from "next/navigation";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 interface FormValues {
   email: string;
@@ -25,6 +27,33 @@ export default function LogInForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [errors, setErrors] = useState<FormValues>(initialErrorsState);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const login = async (formValues: FormValues) => {
+    console.log(formValues);
+
+    setIsLoading(true);
+
+    const supabase = createClientComponentClient();
+
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: formValues.email,
+      password: formValues.password,
+    });
+
+    setIsLoading(false);
+
+    if (!error) {
+      setErrors(initialErrorsState);
+      router.push("/shell/dashboard");
+    } else if (error.status === 400) {
+      setErrors({
+        email: " ",
+        password: "Email or password is wrong.",
+      });
+    }
+  };
 
   const handleLogIn = () => {
     const email = emailRef.current?.value;
@@ -58,11 +87,9 @@ export default function LogInForm() {
       }
     }
 
-    setErrors(initialErrorsState);
-
-    console.log({
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
+    login({
+      email,
+      password,
     });
   };
 
@@ -89,7 +116,9 @@ export default function LogInForm() {
           <InputError>{errors.password}</InputError>
         </FormField>
       </div>
-      <Button onClick={handleLogIn}>Log In</Button>
+      <Button onClick={handleLogIn} disabled={isLoading}>
+        Log In
+      </Button>
     </>
   );
 }

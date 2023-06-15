@@ -8,8 +8,7 @@ import RadioInput from "./RadioInput";
 import Button from "./Button";
 import InputError from "./InputError";
 import Tooltip from "./Tooltip";
-import { supabase } from "@/lib/supabaseClient";
-import { setClaim } from "@/lib/supabaseFunctions";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 interface InputValues {
   email: string;
@@ -44,6 +43,8 @@ export default function SignUpForm() {
 
   const createAccount = async (formValues: FormValues) => {
     console.log(formValues);
+
+    const supabase = createClientComponentClient();
 
     supabase.auth.signUp({
       email: formValues.email,
