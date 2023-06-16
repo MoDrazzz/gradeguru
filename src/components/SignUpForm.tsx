@@ -12,6 +12,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 interface InputValues {
   email: string;
+  fullname: string;
   password: string;
   passwordConfirmation: string;
 }
@@ -29,12 +30,14 @@ const passwordRegex = new RegExp(
 
 const initialErrorsState = {
   email: "",
+  fullname: "",
   password: "",
   passwordConfirmation: "",
 };
 
 export default function SignUpForm() {
   const emailRef = useRef<HTMLInputElement>(null);
+  const fullnameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmationRef = useRef<HTMLInputElement>(null);
   const [accountType, setAccountType] = useState("student");
@@ -49,11 +52,18 @@ export default function SignUpForm() {
     supabase.auth.signUp({
       email: formValues.email,
       password: formValues.password,
+      options: {
+        data: {
+          fullname: formValues.fullname,
+          role: accountType,
+        },
+      },
     });
   };
 
   const handleSignUp = () => {
     const email = emailRef.current?.value;
+    const fullname = fullnameRef.current?.value;
     const password = passwordRef.current?.value;
     const passwordConfirmation = passwordConfirmationRef.current?.value;
 
@@ -61,6 +71,7 @@ export default function SignUpForm() {
 
     if (
       typeof email === "undefined" ||
+      typeof fullname === "undefined" ||
       typeof password === "undefined" ||
       typeof passwordConfirmation === "undefined"
     ) {
@@ -69,12 +80,17 @@ export default function SignUpForm() {
 
     const formValues: InputValues = {
       email,
+      fullname,
       password,
       passwordConfirmation,
     };
 
     if (!emailRegex.test(email)) {
       newErrors.email = "Email address is wrong.";
+    }
+
+    if (fullname.length < 3) {
+      newErrors.fullname = "Ensure full name is correct.";
     }
 
     if (!passwordRegex.test(password)) {
@@ -102,6 +118,7 @@ export default function SignUpForm() {
 
     createAccount({
       email,
+      fullname,
       password,
       passwordConfirmation,
       accountType,
@@ -114,7 +131,7 @@ export default function SignUpForm() {
 
   return (
     <>
-      <div className="flex w-96 flex-col gap-5">
+      <div className="flex w-[448px] flex-col gap-5">
         <FormField>
           <Label>Account Type</Label>
           <div className="flex gap-3">
@@ -148,45 +165,56 @@ export default function SignUpForm() {
           <InputError>{errors.email}</InputError>
         </FormField>
         <FormField>
-          <Label>Password</Label>
+          <Label>Full Name</Label>
           <Input
-            type="password"
-            refState={passwordRef}
-            isError={!!errors.password.length}
-            placeholder="Enter password..."
+            refState={fullnameRef}
+            isError={!!errors.fullname.length}
+            placeholder="Enter full name..."
           />
-          <InputError>
-            {errors.password}{" "}
-            {errors.password && (
-              <span
-                className="relative cursor-help text-slate-900"
-                onMouseEnter={() => setTooltipVisible(true)}
-                onMouseLeave={() => setTooltipVisible(false)}
-              >
-                {"(?)"}
-                {tooltipVisible && (
-                  <Tooltip position="bottom-right">
-                    <p>
-                      Password must contain at least 8 characters,
-                      <br />
-                      lower and upper case letter, number and a special sign.
-                    </p>
-                  </Tooltip>
-                )}
-              </span>
-            )}
-          </InputError>
+          <InputError>{errors.fullname}</InputError>
         </FormField>
-        <FormField>
-          <Label>Confirm Password</Label>
-          <Input
-            type="password"
-            isError={!!errors.passwordConfirmation.length}
-            refState={passwordConfirmationRef}
-            placeholder="Confirm your password..."
-          />
-          <InputError>{errors.passwordConfirmation}</InputError>
-        </FormField>
+        <div className="flex gap-5">
+          <FormField>
+            <Label>Password</Label>
+            <Input
+              type="password"
+              refState={passwordRef}
+              isError={!!errors.password.length}
+              placeholder="Enter password..."
+            />
+            <InputError>
+              {errors.password}{" "}
+              {errors.password && (
+                <span
+                  className="relative cursor-help text-slate-900"
+                  onMouseEnter={() => setTooltipVisible(true)}
+                  onMouseLeave={() => setTooltipVisible(false)}
+                >
+                  {"(?)"}
+                  {tooltipVisible && (
+                    <Tooltip position="bottom-right">
+                      <p>
+                        Password must contain at least 8 characters,
+                        <br />
+                        lower and upper case letter, number and a special sign.
+                      </p>
+                    </Tooltip>
+                  )}
+                </span>
+              )}
+            </InputError>
+          </FormField>
+          <FormField>
+            <Label>Confirm Password</Label>
+            <Input
+              type="password"
+              isError={!!errors.passwordConfirmation.length}
+              refState={passwordConfirmationRef}
+              placeholder="Confirm password..."
+            />
+            <InputError>{errors.passwordConfirmation}</InputError>
+          </FormField>
+        </div>
       </div>
       <Button onClick={handleSignUp}>Sign Up</Button>
     </>
