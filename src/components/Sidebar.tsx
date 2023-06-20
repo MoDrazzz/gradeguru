@@ -7,13 +7,24 @@ import Logo from "./Logo";
 import NavItem from "./NavItem";
 import { faIcons, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
-  const logout = async () => {
-    const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient();
+  const router = useRouter();
 
+  const logout = async () => {
     await supabase.auth.signOut();
   };
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT") {
+        router.push("/");
+      }
+    });
+  }, [supabase.auth, router]);
 
   return (
     <aside className="grid h-screen w-[15vw] grid-rows-[repeat(4,min-content)_1fr] items-end justify-items-center gap-12 overflow-scroll border-r-2 border-slate-300 bg-slate-50 py-12">
