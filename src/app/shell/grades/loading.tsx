@@ -1,4 +1,4 @@
-export default function Skeleton() {
+export default function Loading() {
   return (
     <>
       <div className="h-8 w-24 animate-pulse rounded-full bg-slate-300" />

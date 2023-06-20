@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/Button";
 import Link from "@/components/Link";
 import LogInForm from "@/components/LogInForm";
 import Logo from "@/components/Logo";
