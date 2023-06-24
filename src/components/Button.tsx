@@ -3,6 +3,7 @@ import classNames from "classnames";
 interface Props {
   children: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: "submit" | "button";
   disabled?: boolean;
   isBig?: boolean;
   isRed?: boolean;
@@ -10,6 +11,7 @@ interface Props {
 
 export default function Button({
   children,
+  type = "button",
   disabled,
   isBig,
   isRed,
@@ -23,6 +25,7 @@ export default function Button({
         "text-xl": isBig,
         "opacity-70": disabled,
       })}
+      type={type}
       onClick={onClick}
       disabled={disabled}
     >

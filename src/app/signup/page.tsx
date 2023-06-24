@@ -8,7 +8,7 @@ import Slideshow from "@/components/Slideshow";
 export default function SignUp() {
   return (
     <main className="flex h-screen items-center justify-center">
-      <div className="flex rounded-xl bg-slate-50 p-3">
+      <form className="flex rounded-xl bg-slate-50 p-3">
         <div className="flex min-h-full w-96 flex-col justify-between rounded-lg  bg-gradient-to-b from-blue-500 to-blue-600 px-8 py-8 text-slate-50">
           <div className="flex flex-col gap-16">
             <h5 className="font-semibold">GRADEGURU</h5>
@@ -34,7 +34,7 @@ export default function SignUp() {
           </div>
           <SignUpForm />
         </div>
-      </div>
+      </form>
     </main>
   );
 }

@@ -54,7 +54,9 @@ export default function LogInForm() {
     }
   };
 
-  const handleLogIn = () => {
+  const handleLogIn = (e: React.FormEvent) => {
+    e.preventDefault();
+
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
 
@@ -86,6 +88,8 @@ export default function LogInForm() {
       }
     }
 
+    setErrors(initialErrorsState);
+
     login({
       email,
       password,
@@ -115,7 +119,7 @@ export default function LogInForm() {
           <InputError>{errors.password}</InputError>
         </FormField>
       </div>
-      <Button onClick={handleLogIn} disabled={isLoading}>
+      <Button type="submit" onClick={handleLogIn} disabled={isLoading}>
         Log In
       </Button>
     </>

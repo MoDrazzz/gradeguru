@@ -61,7 +61,9 @@ export default function SignUpForm() {
     });
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = (e: React.FormEvent) => {
+    e.preventDefault();
+
     const email = emailRef.current?.value;
     const fullname = fullnameRef.current?.value;
     const password = passwordRef.current?.value;
@@ -216,7 +218,9 @@ export default function SignUpForm() {
           </FormField>
         </div>
       </div>
-      <Button onClick={handleSignUp}>Sign Up</Button>
+      <Button type="submit" onClick={handleSignUp}>
+        Sign Up
+      </Button>
     </>
   );
 }

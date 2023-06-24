@@ -7,7 +7,7 @@ import Logo from "@/components/Logo";
 export default function Home() {
   return (
     <main className="flex h-screen items-center justify-center">
-      <div className="flex rounded-xl bg-slate-50 p-3">
+      <form className="flex rounded-xl bg-slate-50 p-3">
         <div className="flex flex-col gap-8 px-8 py-12">
           <Logo />
           <div className="flex flex-col gap-3">
@@ -18,7 +18,7 @@ export default function Home() {
           </div>
           <LogInForm />
         </div>
-      </div>
+      </form>
     </main>
   );
 }
