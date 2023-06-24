@@ -1,11 +1,11 @@
 "use client";
 
 import { faEdit, faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faIcons, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import LoginStatus from "./LoginStatus";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
-import { faIcons, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -32,7 +32,7 @@ export default function Sidebar() {
       <LoginStatus />
       <Button onClick={() => {}}>New lesson</Button>
       <nav className="grid w-full gap-8">
-        <NavItem icon={faIcons} href="/shell/dashboard">
+        <NavItem icon={faIcons} href="/shell">
           Dashboard
         </NavItem>
         <NavItem icon={faEnvelope} href="/shell/messages">

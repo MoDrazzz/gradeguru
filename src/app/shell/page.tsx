@@ -1,5 +1,12 @@
-import { redirect } from "next/navigation";
+import Heading from "@/components/Heading";
 
-export default async function Page() {
-  return redirect("/shell/dashboard");
+export default function Dashboard() {
+  return (
+    <>
+      <Heading>Dashboard</Heading>
+      <div className="wrapper">
+        <h1>Dashboard...</h1>
+      </div>
+    </>
+  );
 }

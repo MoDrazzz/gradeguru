@@ -21,7 +21,7 @@ export default function NavItem({
   onClick,
   children,
 }: Props) {
-  const isActive = usePathname().startsWith(href);
+  const isActive = usePathname() === href;
 
   return (
     <div className="flex w-full pl-9">

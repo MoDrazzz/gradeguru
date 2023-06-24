@@ -45,8 +45,7 @@ export default function LogInForm() {
     setIsLoading(false);
 
     if (!error) {
-      setErrors(initialErrorsState);
-      router.push("/shell/dashboard");
+      router.push("/shell/");
     } else if (error.status === 400) {
       setErrors({
         email: " ",

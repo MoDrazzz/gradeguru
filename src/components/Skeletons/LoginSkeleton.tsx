@@ -1,9 +1,9 @@
-export default function Page() {
+export default function LoginSkeleton() {
   return (
     <main className="flex h-screen items-center justify-center">
       <div className="flex rounded-xl bg-slate-50 p-3">
-        <div className="flex flex-col gap-8 px-8 py-12">
-          <div className="flex w-full items-center justify-center gap-3">
+        <div className="flex animate-pulse flex-col gap-8 px-8 py-12">
+          <div className="flex w-full items-center justify-center">
             <div className="h-10 w-48 rounded-full bg-slate-200" />
           </div>
           <div className="flex flex-col gap-3">
